@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>VoteCasterFail</title> 
+	<title>Spot</title> 
 	<meta charset="utf-8">
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -12,49 +12,42 @@
 
 	<link rel="stylesheet" href="style.css" />
 	<link rel="apple-touch-icon" href="appicon.png" />
-	<link rel="apple-touch-startup-image" href="startup.png">
+	<link rel="apple-touch-startup-image" href="wildthings.png">
 	
 	<script src="jquery-1.8.2.min.js"></script>
 	<script src="jquery.mobile-1.2.0.js"></script>
 
 </head> 
 
-	
 <body> 
+
+
+	
 
 <!-- Start of first page: #one -->
 <div data-role="page" id="one">
 
 	<div data-role="header">
-		<h1>Multi-Page Header</h1>
+		<h1>Welcome to Spot</h1>
 	</div><!-- /header -->
 
 	<div data-role="content">	
-		<h2>Welcome <span id="username"></span></h2>
+		<h2>Log In <span id="username"></span></h2>
 		
-		<p>The neat thing about this example is that you can swipe right and left to navigate between pages, and you can also see in the code that the entire three page sequence within here is bundled into one page.</p>	
+		<p> User chooses whether to log in or create a new account.</p>	
 
-		<h3>Show internal pages:</h3>
-		<p><a href="#two" data-role="button">Show page "two"</a></p>	
-		<p><a href="#popup" data-role="button" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a></p>
+		<h3></h3>
+		<p><a href="#two" data-role="button">Log In</a></p>	
+		<p><a href="#newUser" data-role="button">Create a User</a></p>
 	</div><!-- /content -->
 	
-	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
-		<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
-			<ul>
-				<li><a href="index.php" id="home" data-icon="custom" class="ui-btn-active">Home</a></li>
-				<li><a href="login.php" id="key" data-icon="custom">Login</a></li>
-				<li><a href="filter.php" id="beer" data-icon="custom">Filter</a></li>
-				<li><a href="#" id="skull" data-icon="custom">Settings</a></li>
-			</ul>
-		</div>
-	</div>
+	
 </div>
 	
 </div><!-- /page one -->
 
 
-<!-- Start of second page: #two -->
+<!-- Start of Log In Page: #two -->
 <div data-role="page" id="two" data-add-back-btn="true">
 
 	<div data-role="header">
@@ -62,26 +55,54 @@
 	</div><!-- /header -->
 
 	<div data-role="content">	
-		<h2>Two</h2>
-		<p>I have an id of "two" on my page container. I'm the second page container in this multi-page template.</p>	
-		<p>Notice that the theme is different for this page because we've added a few <code>data-theme</code> swatch assigments here to show off how flexible it is. You can add any content or widget to these pages, but we're keeping these simple.</p>	
-		<p><a href="#one" data-direction="reverse" data-role="button" data-theme="b">Back to page "one"</a></p>	
+		<h2>Log In</h2>
+		<p></p>	
+		<h2>
+		Name: <input type="text" name =""somename"" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
+		</h2>
+		<p></p>
+		<h2>
+		Password: <input type="password" name =""somename"" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
+		</h2>
+		<p><a href="home.php" data-direction="reverse" data-role="button" data-theme="b">Sign In</a></p>	
 		
 	</div><!-- /content -->
 	
-	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
-		<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
+</div><!-- /Start of Log In Page: page two -->
+
+
+
+
+<!-- Create new User Page-->
+<div data-role="page" id="newUser" data-add-back-btn="true">
+
+	<div data-role="header">
+		<h1>Create A New User</h1>
+	</div><!-- /header -->
+	
+	<p></p>	
+		<h2>
+		Name: <input type="text" name =""somename"" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
+		</h2>
+		<h2>
+		Stanford Email Address: <input type="text" name =""somename"" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
+		</h2>
+		<h2>
+		Password: <input type="password" name =""somename"" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
+		</h2>
+		<h2>
+		Confirm Password: <input type="password" name =""somename"" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
+		</h2>
+
+	<div data-role="content">	
+		<p></p>	
+		<p><a href="home.php" data-direction="reverse" data-role="button" data-theme="b">Create User</a></p>	
 		
-		<ul>
-			<li><a href="index.php" id="home" data-icon="custom">Home</a></li>
-			<li><a href="login.php" id="key" data-icon="custom" class="ui-btn-active">Login</a></li>
-			<li><a href="filter.php" id="beer" data-icon="custom">Filter</a></li>
-			<li><a href="#" id="skull" data-icon="custom">Settings</a></li>
-		</ul>
-		</div>
-	</div>
+	</div><!-- /content -->
+	
 </div>
-</div><!-- /page two -->
+
+<!--create new user page end-->
 
 
 <!-- Start of third page: #popup -->
@@ -100,7 +121,7 @@
 	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
 		<ul>
-			<li><a href="index.php" id="home" data-icon="custom">Home</a></li>
+			<li><a href="home.php" id="home" data-icon="custom">Home</a></li>
 			<li><a href="login.php" id="key" data-icon="custom">Login</a></li>
 			<li><a href="filter.php" id="beer" data-icon="custom" class="ui-btn-active">Filter</a></li>
 			<li><a href="#" id="skull" data-icon="custom">Settings</a></li>
