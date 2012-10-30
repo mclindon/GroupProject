@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>VoteCaster | Submit</title> 
+	<title>Where the Wild Things Are | Submit</title> 
 	<meta charset="utf-8">
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -31,8 +31,17 @@
 		include("config.php"); 
 		<?php
 		// This is a hack. You should connect to a database here.
-		if ($_POST["username"] == "oi") {
-			?>
+
+		$query = "select * from Users where username = ‘".$_POST["username"]."’ and password='".$_POST["password"]."’";
+		$result = mysql_query($query);
+     	 // This tells you how many rows were returned
+		$num_rows = mysql_num_rows($result);
+
+		if ($num_rows == 0) {
+			//password + username aren't in the database
+			echo "<p>Incorrect username and/or password.</p>";		
+		} else {
+		?>
 			<script type="text/javascript">
 				// Save the username in local storage. That way you
 				// can access it later even if the user closes the app.

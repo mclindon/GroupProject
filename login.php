@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>VoteCaster | Login</title> 
+	<title>Where the Wild Things Are | Login</title> 
 	<meta charset="utf-8">
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -29,10 +29,10 @@
 
 	<div data-role="content">
 	
-	<p>The form should go here</p>
-		<div data-role="fieldcontain">
-			
-		</div>	
+		<p>The form should go here</p>
+	
+	<div data-role="fieldcontain">		
+	</div>	
 	
 		
 	<div id="info">
