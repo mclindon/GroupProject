@@ -64,7 +64,7 @@
 		<h2>
 		Password: <input type="password" name =""somename"" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
 		</h2>
-		<p><a href="home.php" data-direction="reverse" data-role="button" data-theme="b">Sign In</a></p>	
+		<p><a href="enter.php" data-direction="reverse" data-role="button" data-theme="b">SIGN IN</a></p>	
 		
 	</div><!-- /content -->
 	

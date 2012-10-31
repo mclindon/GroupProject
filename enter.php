@@ -36,10 +36,13 @@
 		$result = mysql_query($query);
      	 // This tells you how many rows were returned
 		$num_rows = mysql_num_rows($result);
-
-		if ($num_rows == 0) {
+		$zero = 0;
+		if ($num_rows == $zero) {
 			//password + username aren't in the database
-			echo "<p>Incorrect username and/or password.</p>";		
+			echo "<p>Incorrect username and/or password.</p>";	
+			?>
+			<li><a href="index.php">Click here to try again</a></li>
+			<?php	
 		} else {
 		?>
 			<script type="text/javascript">

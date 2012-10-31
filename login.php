@@ -22,7 +22,7 @@
 <div data-role="page">
 
 	<div data-role="header">
-	<h1>Log in</h1>
+	<h1>Log in  ….</h1>
 	<a href="#" data-icon="check" id="logout" class="ui-btn-right">Logout</a>
 
 	</div><!-- /header -->
