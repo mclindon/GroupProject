@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Spot</title> 
+	<title>Where the Wild Things Are</title> 
 	<meta charset="utf-8">
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -10,23 +10,20 @@
 
 	<link rel="stylesheet" href="jquery.mobile-1.2.0.css" />
 
-	<link rel="stylesheet" href="style.css" />
-	<link rel="apple-touch-icon" href="appicon.png" />
-	<link rel="apple-touch-startup-image" href="wildthings.png">
+	<link rel="stylesheet" href="style.css"/>
+	<link rel="apple-touch-icon" href="icon2.png"/>
+	<link rel="apple-touch-startup-image" href="startup.png"/>
 	
 	<script src="jquery-1.8.2.min.js"></script>
 	<script src="jquery.mobile-1.2.0.js"></script>
 
 </head> 
+<body> 	
 
-<body> 
-
-
-	
+<!-- CHECK 123 -->
 
 <!-- Start of first page: #one -->
 <div data-role="page" id="one">
-
 	<div data-role="header">
 		<h1>Welcome to Spot</h1>
 	</div><!-- /header -->
@@ -34,72 +31,55 @@
 	<div data-role="content">	
 		<h2>Log In <span id="username"></span></h2>
 		
-		<p> User chooses whether to log in or create a new account.</p>	
-
-		<h3></h3>
+		<p> Choose to sign up or log in below!</p>	
+		
 		<p><a href="#two" data-role="button">Log In</a></p>	
 		<p><a href="#newUser" data-role="button">Create a User</a></p>
 	</div><!-- /content -->
-	
-	
 </div>
-	
-</div><!-- /page one -->
-
 
 <!-- Start of Log In Page: #two -->
 <div data-role="page" id="two" data-add-back-btn="true">
-
 	<div data-role="header">
-		<h1>Two</h1>
+		<h1>Log In</h1>
 	</div><!-- /header -->
 
 	<div data-role="content">	
-		<h2>Log In</h2>
-		<p></p>	
-		<h2>
-		Name: <input type="text" name =""somename"" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
-		</h2>
-		<p></p>
-		<h2>
-		Password: <input type="password" name =""somename"" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
-		</h2>
-		<p><a href="enter.php" data-direction="reverse" data-role="button" data-theme="b">SIGN IN</a></p>	
+		<h2>Please enter your username and password</h2>
 		
+		<form action = "home.php" method = "post">
+			<h2>
+			Name: <input type="text" name ="username" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
+			</h2>
+			<h2>
+			Password: <input type="password" name ="password" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
+			</h2>
+			<p><input type = "submit" data-direction="reverse" data-role="button" data-theme="b" value = "Sign In"></p>	
+		</form>
 	</div><!-- /content -->
-	
 </div><!-- /Start of Log In Page: page two -->
-
-
-
 
 <!-- Create new User Page-->
 <div data-role="page" id="newUser" data-add-back-btn="true">
-
 	<div data-role="header">
 		<h1>Create A New User</h1>
 	</div><!-- /header -->
 	
-	<p></p>	
+	<form action = "home.php" method = "post">
 		<h2>
-		Name: <input type="text" name =""somename"" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
+		Name: <input type="text" name ="username" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
 		</h2>
 		<h2>
-		Stanford Email Address: <input type="text" name =""somename"" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
+		Stanford Email Address: <input type="text" name ="email" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
 		</h2>
 		<h2>
-		Password: <input type="password" name =""somename"" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
+		Password: <input type="password" name ="password" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
 		</h2>
 		<h2>
-		Confirm Password: <input type="password" name =""somename"" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
+		Confirm Password: <input type="password" name ="passwordCheck" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
 		</h2>
-
-	<div data-role="content">	
-		<p></p>	
-		<p><a href="home.php" data-direction="reverse" data-role="button" data-theme="b">Create User</a></p>	
-		
-	</div><!-- /content -->
-	
+		<p><input type = "submit" data-direction="reverse" data-role="button" data-theme="b" value="Create Account and Sign In"></p>
+	</form>
 </div>
 
 <!--create new user page end-->

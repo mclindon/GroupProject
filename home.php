@@ -11,11 +11,10 @@
 	<link rel="stylesheet" href="jquery.mobile-1.2.0.css" />
 	<link rel="stylesheet" href="style.css" />
 	<link rel="apple-touch-icon" href="icon2.png" />
-	<link rel="apple-touch-startup-image" href="wildthings.png"/>
+	<link rel="apple-touch-startup-image" href="startup.png"/>
 	
 	<script src="jquery-1.8.2.min.js"></script>
 	<script src="jquery.mobile-1.2.0.js"></script>
-
 </head>  
 <body> 
 
@@ -46,7 +45,6 @@
  $num_rows = mysql_num_rows($result);
 
  if ($num_rows == 0) {
-
  ?>
  	<p> Username or password is incorrect. </p>
  	
@@ -71,19 +69,51 @@
 	<div data-role="page" id="home">
 
 		<div data-role="header">
-			<h1>Recent Spots</h1>
+			<h1><?=$username?>'s Home Page</h1>
 		</div><!-- /header -->
 
 		<div data-role="content">	
-			<h2>Home News Feed</h2>	
-			<p><a href="spot.php" data-direction="reverse" data-role="button" data-theme="b">Spot</a></p>	
-			<p><a href="profile.php" data-direction="reverse" data-role="button" data-theme="b">Person's Profile</a></p>	
+
+			<h2>News Feed</h2>	
+			
+			<div data-role="content">
+   				<ul class = "LV" data-role="listview" data-divider-theme="d" data-filter="true">
+			<!-- Let's include the header file that we created above -->
+			<?php
+			$query = "select * from Pictures";
+ 			$result = mysql_query($query);
+
+ 			while($row = mysql_fetch_array($result, MYSQL_BOTH)) {
+ 			?>
+ 					<li>
+ 						<a href="index.php" data-transition="slideup">
+ 						<img src = "<?=$row['url']?>" alt = "test"/>
+   						<h3><?=$row["comment"]?></h3>
+   						</a>
+   					</li>
+   					<span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>
+ 			<?php
+ 			}
+			?>
+				</ul>
+			</div>
+			
+			<form action = "profile.php" method = "post">
+				<input name="username" type="hidden" value="<?=$username?>"/>
+				<input type = "submit" data-direction="reverse" data-role="button" data-theme="b" value="My Profile">
+			</form>
+			
+		    <input type="file" accept="image/*" capture="camera">
+	
+			<form action = "spot.php" method = "post">
+				<input name="username" type="hidden" value="<?=$username?>"/>
+				<input type = "submit" data-direction="reverse" data-role="button" data-theme="b" value="Share a Spot!">
+			</form>	
 		
 		</div><!-- /content -->
 	
 		<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
 			<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
-		
 				<ul>
 					<li><a href="search.php" id="search" data-icon="custom">Search</a></li>
 					<li><a href="share.php" id="share" data-icon="custom">Share</a></li>
