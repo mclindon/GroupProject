@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>VoteCaster | Login</title> 
+	<title>Where the Wild Things Are | Home</title> 
 	<meta charset="utf-8">
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -10,8 +10,8 @@
 
 	<link rel="stylesheet" href="jquery.mobile-1.2.0.css" />
 	<link rel="stylesheet" href="style.css" />
-	<link rel="apple-touch-icon" href="appicon.png" />
-	<link rel="apple-touch-startup-image" href="startup.png">
+	<link rel="apple-touch-icon" href="icon2.png" />
+	<link rel="apple-touch-startup-image" href="wildthings.png"/>
 	
 	<script src="jquery-1.8.2.min.js"></script>
 	<script src="jquery.mobile-1.2.0.js"></script>
@@ -19,33 +19,79 @@
 </head>  
 <body> 
 
+ <?php
+ include("config.php"); 
 
-<!-- /Home Screen/NewsFeed -->
-<div data-role="page" id="home">
+ $username = $_POST["username"];
+ $password = $_POST["password"];
+ $passwordCheck = $_POST["passwordCheck"];
+ $email = $_POST["email"];
+ 
+ if ($passwordCheck != "") {
+ 	if ($password == $passwordCheck) {
+ 		mysql_query("insert into Users (username, password, email) VALUES ('$username', '$password', '$email')");
+ 	} else {
+ 		?>
+ 		<p> Your passwords did not match. </p>
+ 	
+ 		<p> Would you like to try again? </p>
+ 		<p><a href="index.php" data-direction="reverse" data-role="button" data-theme="b">Try Again</a></p>		
+ 		<?php
+ 	}	
+ }
 
-	<div data-role="header">
-		<h1>Recent Spots</h1>
-	</div><!-- /header -->
+ $query = "select * from Users where username = '$username' and password='$password'";
+ $result = mysql_query($query);
 
-	<div data-role="content">	
-		<h2>Home News Feed</h2>
-		<p></p>	
-		<p><a href="spot.php" data-direction="reverse" data-role="button" data-theme="b">Spot</a></p>	
-		<p><a href="profile.php" data-direction="reverse" data-role="button" data-theme="b">Person's Profile</a></p>	
+ $num_rows = mysql_num_rows($result);
+
+ if ($num_rows == 0) {
+
+ ?>
+ 	<p> Username or password is incorrect. </p>
+ 	
+ 	<p> Would you like to try again? </p>
+ 	<p><a href="index.php" data-direction="reverse" data-role="button" data-theme="b">Try Again</a></p>		
+ 	
+ 	<!--The code below redirects you immediately to the below link. This was used during testing
+ 	and might be helpful later.
+	<script type="text/javascript">
+		window.location="http://www.stanford.edu/~ckortel/cgi-bin/GroupProject/index.php";
+	</script>	-->
+ <?php
+ } else {
+ ?>
+ 	<script type="text/javascript">
+		//Save the username in local storage. That way you
+		//can access it later even if the user closes the app.
+		localStorage.setItem('username', '<?=$_POST["username"]?>');
+	</script>
+
+	<!-- /Home Screen/NewsFeed -->
+	<div data-role="page" id="home">
+
+		<div data-role="header">
+			<h1>Recent Spots</h1>
+		</div><!-- /header -->
+
+		<div data-role="content">	
+			<h2>Home News Feed</h2>	
+			<p><a href="spot.php" data-direction="reverse" data-role="button" data-theme="b">Spot</a></p>	
+			<p><a href="profile.php" data-direction="reverse" data-role="button" data-theme="b">Person's Profile</a></p>	
 		
-	</div><!-- /content -->
+		</div><!-- /content -->
 	
-	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
-		<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
+		<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
+			<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
 		
-		<ul>
-			<li><a href="search.php" id="search" data-icon="custom">Search</a></li>
-			<li><a href="share.php" id="share" data-icon="custom">Share</a></li>
-			<li><a href="#favorites" id="favorite" data-icon="custom">Favorites</a></li>
-		</ul>
+				<ul>
+					<li><a href="search.php" id="search" data-icon="custom">Search</a></li>
+					<li><a href="share.php" id="share" data-icon="custom">Share</a></li>
+					<li><a href="#favorites" id="favorite" data-icon="custom">Favorites</a></li>
+				</ul>
+			</div>
 		</div>
 	</div>
-</div>
 
 <!-- Start of third page: #popup -->
 <div data-role="page" id="favorites">
@@ -56,7 +102,9 @@
 
 	<div data-role="content" data-theme="d">	
 		<h2>Favorites</h2>
-		<p>I have an id of "popup" on my page container and only look like a dialog because the link to me had a <code>data-rel="dialog"</code> attribute which gives me this inset look and a <code>data-transition="pop"</code> attribute to change the transition to pop. Without this, I'd be styled as a normal page.</p>		
+		<p>I have an id of "popup" on my page container and only look like a dialog because the link to me had a 
+		<code>data-rel="dialog"</code> attribute which gives me this inset look and a <code>data-transition="pop"</code> 
+		attribute to change the transition to pop. Without this, I'd be styled as a normal page.</p>		
 		<p><a href="#one" data-rel="back" data-role="button" data-inline="true" data-icon="back">Back to page "one"</a></p>	
 	</div><!-- /content -->
 	
@@ -90,6 +138,9 @@
 	});
 	</script>
 </div>
+ <?php
+ } 
+ ?>
 <!--Home Screen/News Feed End-->
 </body>
 </html>

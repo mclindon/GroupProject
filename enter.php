@@ -10,8 +10,8 @@
 
 	<link rel="stylesheet" href="jquery.mobile-1.2.0.css" />
 	<link rel="stylesheet" href="style.css" />
-	<link rel="apple-touch-icon" href="appicon.png" />
-	<link rel="apple-touch-startup-image" href="startup.png">
+	<link rel="apple-touch-icon" href="icon2.png" />
+	<link rel="apple-touch-startup-image" href="startup.png"/>
 	
 	<script src="jquery-1.8.2.min.js"></script>
 	<script src="jquery.mobile-1.2.0.js"></script>
@@ -22,27 +22,30 @@
 <div data-role="page">
 
 	<div data-role="header">
-		<h1>My Title</h1>
+		//<h1>My Title</h1>
 		<a href="#" data-icon="check" id="logout" class="ui-btn-right">Logout</a>
 
 	</div><!-- /header -->
 
 	<div data-role="content">	
-		include("config.php"); 
 		<?php
+		include("config.php"); 
 		// This is a hack. You should connect to a database here.
-
-		$query = "select * from Users where username = ‘".$_POST["username"]."’ and password='".$_POST["password"]."’";
+		$username = $_POST["username"];
+		$password = $_POST["password"];
+		$query = "select * from Users where username = '$username' and password='$password'";
 		$result = mysql_query($query);
      	 // This tells you how many rows were returned
 		$num_rows = mysql_num_rows($result);
-		$zero = 0;
-		if ($num_rows == $zero) {
+
+		if ($num_rows == 0) {
 			//password + username aren't in the database
-			echo "<p>Incorrect username and/or password.</p>";	
+			echo "<p>Incorrect username and/or password.</p>";
 			?>
-			<li><a href="index.php">Click here to try again</a></li>
-			<?php	
+			<script type="text/javascript">
+				window.location='www.stanford.edu/~ckortel/cgi-bin/GroupProject/login.php';
+			</script>	
+			<?php
 		} else {
 		?>
 			<script type="text/javascript">
@@ -50,8 +53,12 @@
 				// can access it later even if the user closes the app.
 				localStorage.setItem('username', '<?=$_POST["username"]?>');
 			</script>
+			
+			<script type="text/javascript">
+				window.location='www.stanford.edu/~ckortel/cgi-bin/GroupProject/home.php';
+			</script>
 			<?php
-			echo "<p>Thank you, <strong>".$_POST["username"]."</strong>. You are now logged in.</p>";
+			//
 		} else {
 			echo "<p>There seems to have been an error.</p>";
 		}
@@ -59,25 +66,6 @@
 
 		?>
 	</div><!-- /content -->
-
-	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
-		<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
-		<ul>
-			<li><a href="index.php" id="home" data-icon="custom">Home</a></li>
-			<li><a href="login.php" id="key" data-icon="custom" class="ui-btn-active">Login</a></li>
-			<li><a href="filter.php" id="beer" data-icon="custom">Filter</a></li>
-			<li><a href="#" id="skull" data-icon="custom">Settings</a></li>
-		</ul>
-		</div>
-	</div>
-	
-	<script type="text/javascript">
-		$("#logout").click(function() {
-			localStorage.removeItem('username');
-			$("#form").show();
-			$("#logout").hide();
-		});
-	</script>
 </div><!-- /page -->
 
 </body>

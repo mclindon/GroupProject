@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>VoteCaster | Login</title> 
+	<title>Where the Wild Things Are | Login</title> 
 	<meta charset="utf-8">
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -10,8 +10,8 @@
 
 	<link rel="stylesheet" href="jquery.mobile-1.2.0.css" />
 	<link rel="stylesheet" href="style.css" />
-	<link rel="apple-touch-icon" href="appicon.png" />
-	<link rel="apple-touch-startup-image" href="startup.png">
+	<link rel="apple-touch-icon" href="icon2.png" />
+	<link rel="apple-touch-startup-image" href="startup.png"/>
 	
 	<script src="jquery-1.8.2.min.js"></script>
 	<script src="jquery.mobile-1.2.0.js"></script>
@@ -67,7 +67,7 @@
 
 	<div data-role="content" data-theme="d">	
 		<h2>Popup</h2>
-		<p>I have an id of "popup" on my page container and only look like a dialog because the link to me had a <code>data-rel="dialog"</code> attribute which gives me this inset look and a <code>data-transition="pop"</code> attribute to change the transition to pop. Without this, I'd be styled as a normal page.</p>		
+		<p>I have an id of "popup" on my page container and only look like a dialog because the link to me had a <code>data-	rel="dialog"</code> attribute which gives me this inset look and a <code>data-transition="pop"</code> attribute to change the transition to pop. Without this, I'd be styled as a normal page.</p>		
 		<p><a href="#one" data-rel="back" data-role="button" data-inline="true" data-icon="back">Back to page "one"</a></p>	
 	</div><!-- /content -->
 	

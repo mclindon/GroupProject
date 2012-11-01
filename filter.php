@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>VoteCaster | Filter</title> 
+	<title>Where the Wild Things Are | Filter</title> 
 	<meta charset="utf-8">
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -10,8 +10,8 @@
 
 	<link rel="stylesheet" href="jquery.mobile-1.2.0.css" />
 	<link rel="stylesheet" href="style.css" />
-	<link rel="apple-touch-icon" href="appicon.png" />
-	<link rel="apple-touch-startup-image" href="startup.png">
+	<link rel="apple-touch-icon" href="icon2.png" />
+	<link rel="apple-touch-startup-image" href="startup.png"/>
 	
 	<script src="jquery-1.8.2.min.js"></script>
 	<script src="jquery.mobile-1.2.0.js"></script>
