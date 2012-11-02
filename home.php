@@ -80,15 +80,15 @@
    				<ul class = "LV" data-role="listview" data-divider-theme="d" data-filter="true">
 			<!-- Let's include the header file that we created above -->
 			<?php
-			$query = "select * from Pictures";
+			$query = "select * from Spots";
  			$result = mysql_query($query);
 
  			while($row = mysql_fetch_array($result, MYSQL_BOTH)) {
  			?>
  					<li>
- 						<a href="index.php" data-transition="slideup">
+ 						<a href="spot.php?id=<?=$row['id']?>" data-transition="slideup" method="get">
  						<img src = "<?=$row['url']?>" alt = "test"/>
-   						<h3><?=$row["comment"]?></h3>
+   						<h3><?=$row["description"]?></h3>
    						</a>
    					</li>
    					<span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>
@@ -105,7 +105,7 @@
 			
 		    <input type="file" accept="image/*" capture="camera">
 	
-			<form action = "spot.php" method = "post">
+			<form action = "share.php" method = "post">
 				<input name="username" type="hidden" value="<?=$username?>"/>
 				<input type = "submit" data-direction="reverse" data-role="button" data-theme="b" value="Share a Spot!">
 			</form>	
@@ -116,8 +116,9 @@
 			<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
 				<ul>
 					<li><a href="search.php" id="search" data-icon="custom">Search</a></li>
+					<li><a href="home.php" id="homepage" data-icon="custom">Home</a></li>
 					<li><a href="share.php" id="share" data-icon="custom">Share</a></li>
-					<li><a href="#favorites" id="favorite" data-icon="custom">Favorites</a></li>
+					<li><a href="" id="explore" data-icon="custom">Explore</a></li>
 				</ul>
 			</div>
 		</div>
