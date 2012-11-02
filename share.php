@@ -15,6 +15,8 @@
 	
 	<script src="jquery-1.8.2.min.js"></script>
 	<script src="jquery.mobile-1.2.0.js"></script>
+	  <script src="script.js"></script>
+
 
 </head>  
 <body> 
@@ -27,27 +29,57 @@
 		<h1>Share A Spot</h1>
 	</div><!-- /header -->
 	<p></p>	
+	<form action = "temp.php" method = "post">
 		<h2>
-		Name the Spot  <input type="text" name =""somename"" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
+		Name the Spot  <input type="text" name ="newName" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
 		</h2>
 		<h2>
-		What's the Spot? <input type="text" name =""somename"" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
+		What's the Spot? <input type="text" name ="newDescription" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
 		</h2>
-		<h2>
-		<h2>Where's the Spot?</h2>
 		<p>
-		<a href="" data-direction="reverse" data-role="button" data-theme="b">Right Here (will animate when pressed)</a>	
-		<a href="map.php" data-direction="reverse" data-role="button" data-theme="b">Go To Map</a>
 		<h2>
+	 <div class="container">
+		<div class="upload_form_cont">
+                <form id="upload_form" enctype="multipart/form-data" method="post" action="upload.php">
+                    <div>
+                        <div><label for="image_file">Please select image file</label></div>
+                        <div><input type="file" name="image_file" id="image_file" onchange="fileSelected();" /></div>
+                    </div>
+                    <div>
+                        <input type="button" value="Upload" onclick="startUploading()" />
+                    </div>
+                    <div id="fileinfo">
+                        <div id="filename"></div>
+                        <div id="filesize"></div>
+                        <div id="filetype"></div>
+                        <div id="filedim"></div>
+                    </div>
+                    <div id="error">You should select valid image files only!</div>
+                    <div id="error2">An error occurred while uploading the file</div>
+                    <div id="abort">The upload has been canceled by the user or the browser dropped the connection</div>
+                    <div id="warnsize">Your file is very big. We can't accept it. Please select more small file</div>
+
+                    <div id="progress_info">
+                        <div id="progress"></div>
+                        <div id="progress_percent"></div>
+                        <div class="clear_both"></div>
+                        <div>
+                            <div id="speed"></div>
+                            <div id="remaining"></div>
+                            <div id="b_transfered"></div>
+                            <div class="clear_both"></div>
+                        </div>
+                        <div id="upload_response"></div>
+                    </div>
+                </form>
+                <img id="preview" />
+            </div>
+		</div>
 		</h2>
-		<a href="" data-direction="reverse" data-role="button" data-theme="b">Take A Picture</a>
 		</p>	
-		<h2>
-		</h2>
-		<p>
-		<a href="home.php" data-direction="reverse" data-role="button" data-theme="b">Share</a>
-		</p>
+		<input type = "submit" data-direction = "reverse" data-role = "button" data-theme = "c" value = "Share">
 		
+	</form>
 </div>	
 		
 <!-- Start of third page: #popup -->

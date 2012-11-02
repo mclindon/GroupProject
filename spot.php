@@ -18,23 +18,64 @@
 
 </head>  
 <body> 
+<?php
+ include("config.php"); 
 
+ 
+ $spotID = $_GET['id']; 
+  
+ $query = "select * from Spots where id = '$spotID'";
+ $result = mysql_query($query);
+ 
+ while($row = mysql_fetch_array($result, MYSQL_BOTH)) {
+	$spotDescription = $row['description']; 
+	$spotName = $row['name']; 
+	$spotCoordX = $row['coordX']; 
+	$spotCoordY = $row['coordY']; 
+	$spotCreator = $row['username']; 
+ }
+
+ ?>
 
 <!-- /Home Screen/NewsFeed -->
 <div data-role="page" id="home" data-add-back-btn="true">
 
 	<div data-role="header">
-		<h1>This is a spot page</h1>
+		<h1><?=$spotName?></h1>
 	</div><!-- /header -->
 	<p></p>	
 		<h2>
-		Name of the Spot
+		<?=$spotName?> 
 		</h2>
 		<h2>
-		What's the Spot?
+		<?=$spotDescription?>
 		</h2>
+		<div data-role="content">
+   		<ul class = "LV" data-role="listview" data-divider-theme="d">
+		<h2> 
+		<?php
+		 	$query = "select * from Users where name = '$spotCreator'";
+ 			$result = mysql_query($query);
+ 			
+ 			while($row = mysql_fetch_array($result, MYSQL_BOTH)) {
+ 			?>
+ 			<li>
+ 			 	<a href="profile.php?id=<?=$row['name']?>" data-transition="slideup" method="get">
+ 				<img src = "<?=$row['picture']?>" alt = "test"/>
+   				<h3>Created by <?=$row["name"]?></h3>
+   				</a>
+   			</li>
+   				<span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>
+   			<?php
+ 				}
+ 			?>
+		</h2>
+		</ul>
+		</div>
+
+		
 		<h2>
-		Where's the Spot?
+		Latitude: <?=$spotCoordX?> , Longitude: <?=$spotCoordY?>
 		</h2>
 		<p>
 		<a href="map.php" data-direction="reverse" data-role="button" data-theme="b">Go To Map</a>
@@ -52,7 +93,10 @@
 	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
 		<ul>
-			<li><a href="#comments" id="comment" data-icon="custom">Comments</a></li>
+			<li><a href="search.php" id="search" data-icon="custom">Search</a></li>
+			<li><a href="home.php" id="homepage" data-icon="custom">Home</a></li>
+			<li><a href="share.php" id="share" data-icon="custom">Share</a></li>
+			<li><a href="" id="explore" data-icon="custom">Explore</a></li>
 		</ul>
 		</div>
 	</div>
@@ -74,10 +118,10 @@
 	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
 		<ul>
-			<li><a href="home.php" id="home" data-icon="custom">Home</a></li>
-			<li><a href="login.php" id="key" data-icon="custom">Login</a></li>
-			<li><a href="filter.php" id="beer" data-icon="custom" class="ui-btn-active">Filter</a></li>
-			<li><a href="#" id="skull" data-icon="custom">Settings</a></li>
+			<li><a href="search.php" id="search" data-icon="custom">Search</a></li>
+					<li><a href="home.php" id="homepage" data-icon="custom">Home</a></li>
+					<li><a href="share.php" id="share" data-icon="custom">Share</a></li>
+					<li><a href="" id="explore" data-icon="custom">Explore</a></li>
 		</ul>
 		</div>
 	</div>
