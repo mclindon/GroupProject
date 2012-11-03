@@ -9,13 +9,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 
 	<link rel="stylesheet" href="jquery.mobile-1.2.0.css" />
-	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="css/main.css" />
 	<link rel="apple-touch-icon" href="icon2.png" />
 	<link rel="apple-touch-startup-image" href="startup.png"/>
 	
 	<script src="jquery-1.8.2.min.js"></script>
 	<script src="jquery.mobile-1.2.0.js"></script>
-	  <script src="script.js"></script>
+	<script src="js/script.js"></script>
 
 
 </head>  
@@ -28,25 +28,17 @@
 	<div data-role="header">
 		<h1>Share A Spot</h1>
 	</div><!-- /header -->
-	<p></p>	
-	<form action = "temp.php" method = "post">
-		<h2>
-		Name the Spot  <input type="text" name ="newName" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
-		</h2>
-		<h2>
-		What's the Spot? <input type="text" name ="newDescription" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
-		</h2>
-		<p>
-		<h2>
+		
 	 <div class="container">
 		<div class="upload_form_cont">
                 <form id="upload_form" enctype="multipart/form-data" method="post" action="upload.php">
                     <div>
                         <div><label for="image_file">Please select image file</label></div>
-                        <div><input type="file" name="image_file" id="image_file" onchange="fileSelected();" /></div>
+                        <div><input type="file" name="image_file" id="image_file" onchange="fileSelected();"/></div>
+                        
                     </div>
                     <div>
-                        <input type="button" value="Upload" onclick="startUploading()" />
+                        <input type="button" value="Upload" onclick="startUploading()"/>
                     </div>
                     <div id="fileinfo">
                         <div id="filename"></div>
@@ -72,14 +64,21 @@
                         <div id="upload_response"></div>
                     </div>
                 </form>
-                <img id="preview" />
+                <img id="preview"/>
             </div>
 		</div>
+
+	<form action = "temp.php" method = "post">
+		<h2>
+		Name the Spot  <input type="text" name ="newName" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
 		</h2>
-		</p>	
+		<h2>
+		What's the Spot? <input type="text" name ="newDescription" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
+		</h2>
+		<input name="username" type="hidden" value="<?=$_GET['username']?>"/>
 		<input type = "submit" data-direction = "reverse" data-role = "button" data-theme = "c" value = "Share">
-		
 	</form>
+	
 </div>	
 		
 <!-- Start of third page: #popup -->

@@ -15,16 +15,31 @@
 	
 	<script src="jquery-1.8.2.min.js"></script>
 	<script src="jquery.mobile-1.2.0.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<script src="js/script.js"></script>
+	
 </head>  
 <body> 
 
- <?php
+  <?php
  include("config.php"); 
 
  $username = $_POST["username"];
+
+ 
+ if($username == null) {
+ 	//$username = $_GET["username"];
+ 	$username = "Bonnie";
+ 	$query = "select * from Users where username = '$username'";
+ 	$result = mysql_query($query);
+ 	$row = mysql_fetch_array($result, MYSQL_BOTH);
+ 	$password =  $row['password'];
+ } else {
+ 	
  $password = $_POST["password"];
  $passwordCheck = $_POST["passwordCheck"];
  $email = $_POST["email"];
+ }
  
  if ($passwordCheck != "") {
  	if ($password == $passwordCheck) {
@@ -58,12 +73,8 @@
 	</script>	-->
  <?php
  } else {
+ 	
  ?>
- 	<script type="text/javascript">
-		//Save the username in local storage. That way you
-		//can access it later even if the user closes the app.
-		localStorage.setItem('username', '<?=$_POST["username"]?>');
-	</script>
 
 	<!-- /Home Screen/NewsFeed -->
 	<div data-role="page" id="home">
@@ -75,7 +86,7 @@
 		<div data-role="content">	
 
 			<h2>News Feed</h2>	
-			
+
 			<div data-role="content">
    				<ul class = "LV" data-role="listview" data-divider-theme="d" data-filter="true">
 			<!-- Let's include the header file that we created above -->
@@ -86,9 +97,10 @@
  			while($row = mysql_fetch_array($result, MYSQL_BOTH)) {
  			?>
  					<li>
- 						<a href="spot.php?id=<?=$row['id']?>" data-transition="slideup" method="get">
+ 						<a href="spot.php?url=<?=$row['url']?>" data-transition="slideup" method="get">
  						<img src = "<?=$row['url']?>" alt = "test"/>
-   						<h3><?=$row["description"]?></h3>
+ 						<h2><?=$row["name"]?></h2>
+   						<p><?=$row["description"]?></p>
    						</a>
    					</li>
    					<span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>
@@ -98,28 +110,43 @@
 				</ul>
 			</div>
 			
-			<form action = "profile.php" method = "post">
-				<input name="username" type="hidden" value="<?=$username?>"/>
-				<input type = "submit" data-direction="reverse" data-role="button" data-theme="b" value="My Profile">
-			</form>
 			
-		    <input type="file" accept="image/*" capture="camera">
-	
-			<form action = "share.php" method = "post">
-				<input name="username" type="hidden" value="<?=$username?>"/>
-				<input type = "submit" data-direction="reverse" data-role="button" data-theme="b" value="Share a Spot!">
-			</form>	
+			<div data-role="content">
+   			<ul class = "LV" data-role="listview" data-divider-theme="d">
+			<?php
+			$query = "select * from Users where username = '$username'";
+		 	 $result = mysql_query($query);
+ 
+ 			 while($row = mysql_fetch_array($result, MYSQL_BOTH)) {
+ 			 ?>
+ 			 
+ 			 <div>
+ 			 <p>
+ 			 </p>
+ 			 <h2>
+ 			 </h2>
+ 			 </div>
+ 			<li>
+ 				<a href="profile.php?username=<?=$row['username']?>" data-transition="slide" method="get">
+ 				<img src = "<?=$row['picture']?>" alt = "test"/>
+ 				<h3>My Profile</h3>
+   		 		</a>
+ 			</li>
+   				<span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>
+   			<?php
+ 	 			}
+ 	 		?>
+		</ul>
+		</div>
 		
 		</div><!-- /content -->
 	
 		<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
-			<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
+			<div data-role="navbar" class="nav-glyphish-example" data-grid="a">
 				<ul>
-					<li><a href="search.php" id="search" data-icon="custom">Search</a></li>
 					<li><a href="home.php" id="homepage" data-icon="custom">Home</a></li>
-					<li><a href="share.php" id="share" data-icon="custom">Share</a></li>
-					<li><a href="" id="explore" data-icon="custom">Explore</a></li>
-				</ul>
+					<li><a href="share.php?username=<?=$username?>" id="share" data-icon="custom" method="get">Share</a></li>				
+					</ul>
 			</div>
 		</div>
 	</div>

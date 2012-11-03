@@ -24,7 +24,7 @@
 <div data-role="page" id="search" data-add-back-btn="true">
 
 	<div data-role="header">
-		<h1>Search</h1>
+		<h1>Explore!</h1>
 	</div>
 
 <script type="text/javascript">

@@ -15,6 +15,7 @@
 	
 	<script src="jquery-1.8.2.min.js"></script>
 	<script src="jquery.mobile-1.2.0.js"></script>
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
 </head> 
 <body> 
@@ -43,7 +44,7 @@
 			echo "<p>Incorrect username and/or password.</p>";
 			?>
 			<script type="text/javascript">
-				window.location='www.stanford.edu/~ckortel/cgi-bin/GroupProject/login.php';
+				window.location='www.stanford.edu/~mclindon/cgi-bin/GroupProject/login.php';
 			</script>	
 			<?php
 		} else {
@@ -55,7 +56,7 @@
 			</script>
 			
 			<script type="text/javascript">
-				window.location='www.stanford.edu/~ckortel/cgi-bin/GroupProject/home.php';
+				window.location='www.stanford.edu/~mclindon/cgi-bin/GroupProject/home.php';
 			</script>
 			<?php
 			//
