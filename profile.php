@@ -42,6 +42,13 @@
 		<h1><?=$profileUsername?></h1>
 	</div><!-- /header -->
 		<img src = "<?=$userPhoto?>" alt = "test" vspace="20" hspace="20" align="middle"/>
+		<?php
+		if ($profileUsername == $_GET['username']) {
+			?>
+			<a href="changePicture.php?username=<?=$profileUsername?>" data-theme="b" data-role="button" data-ajax="false">Click here to change your profile picture</a>	
+			<?php	
+		}
+		?>
 		
 	<div data-role="content">	
 
