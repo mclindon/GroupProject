@@ -16,21 +16,19 @@
 	
 	<script src="jquery-1.8.2.min.js"></script>
 	<script src="jquery.mobile-1.2.0.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	<script src="js/script.js"></script>
-
 
 </head>  
 <body> 
 
-
-<!-- /Home Screen/NewsFeed -->
-<div data-role="page" id="home">
-
+<!-- Create new User Page-->
+<div data-role="page" id="home" data-add-back-btn="true">
 	<div data-role="header">
-		<h1>Share A Spot</h1>
+		<h1>Create A New User</h1>
 	</div><!-- /header -->
-		
-	 <div class="container">
+	
+	<div class="container">
 		<div class="upload_form_cont">
                 <form id="upload_form" enctype="multipart/form-data" method="post" action="upload.php">
                     <div>
@@ -68,27 +66,23 @@
                 <img id="preview"/>
             </div>
 		</div>
-
-	<form action = "temp.php" method = "post">
-		<h2>
-		Name the Spot  <input type="text" name ="newName" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
-		</h2>
-		<h2>
-		What's the Spot? <input type="text" name ="newDescription" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
-		</h2>
-		<input name="username" type="hidden" value="<?=$_GET['username']?>"/>
-		<input type = "submit" data-direction = "reverse" data-role = "button" data-theme = "c" value = "Share">
-	</form>
-
-	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
-		<div data-role="navbar" class="nav-glyphish-example" data-grid="a">
-			<ul>
-				<li><a href="home.php?username=<?=$_GET['username']?>" id="homepage" data-icon="custom" method = "get">Home</a></li>
-			</ul>
-		</div>
-	</div>
 	
-</div>	
+	<form action = "home.php" method = "post">
+		<h2>
+		Name: <input type="text" name ="username" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
+		</h2>
+		<h2>
+		Stanford Email Address: <input type="text" name ="email" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
+		</h2>
+		<h2>
+		Password: <input type="password" name ="password" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
+		</h2>
+		<h2>
+		Confirm Password: <input type="password" name ="passwordCheck" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
+		</h2>
+		<p><input type = "submit" data-direction="reverse" data-role="button" data-theme="b" value="Create Account and Sign In"></p>
+	</form>
+</div>
 
 </body>
 </html>

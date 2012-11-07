@@ -35,12 +35,26 @@
  ?>
 
 <!-- /Home Screen/NewsFeed -->
-<div data-role="page" id="home" data-add-back-btn="true">
+<div data-role="page" id="home">
 
-	<div data-role="header">
+	<div data-role="header" data-position="inline">
 		<h1><?=$spotName?></h1>
+		<?php
+		 $username = $_GET["username"];
+		 $queryCheck = "select * from Favorites where url = '$spotID' and username = '$username'";
+ 		 $resultCheck = mysql_query($queryCheck);
+ 		 if (mysql_num_rows($resultCheck) == 0) {
+		?>
+			<a href="#" data-icon="star" data-theme="b" class="ui-btn-right" id="favoriteButton">Add this spot to Favorites!</a>
+		<?php
+ 		 } else {
+ 		 ?>
+ 		 	<a href="#" data-icon="star" data-theme="b" class="ui-btn-right" id="favoriteButtonRemove">Click to remove from Favorites</a>
+ 		 <?php	
+ 		 }
+		?>
 	</div><!-- /header -->
-	<p></p>	
+
 		<h2>
 		<?=$spotDescription?>
 		</h2>
@@ -48,6 +62,8 @@
 		<img src = "<?=$spotPhoto?>" alt = "test" vspace="20" hspace="50" align="middle"/>
 		</h2>
 
+		
+		
 		<div id="mapcanvas" style="height:315px;width:320px" vspace ="20" hspace ="20"></div>
 
 		<script type="text/javascript">
@@ -179,7 +195,7 @@
  			 while($row = mysql_fetch_array($result, MYSQL_BOTH)) {
  			 ?>
  			<li>
- 				<a href="profile.php?username=<?=$row['username']?>" data-transition="slideup" method="get">
+ 				<a href="profile.php?profileUsername=<?=$row['username']?>&username=<?=$_GET['username']?>" method="get">
  				<img src = "<?=$row['picture']?>" alt = "test"/>
  				<h3>Spotted by <?=$row["username"]?></h3>
    		 		</a>
@@ -189,59 +205,35 @@
  	 			}
  	 		?>
 		</ul>
+		
+		<script>
+		$('#favoriteButton').click(function() {
+			$.post('addToFavs.php', { url: "<?=$_GET['url']?>", username: "<?=$_GET['username']?>" }, function(data) {
+ 				$('#favoriteButton .ui-btn-text').html("Added to Favorites!");
+			});
+		});
+		
+		$('#favoriteButtonRemove').click(function() {
+			$.post('removeFromFavs.php', { url: "<?=$_GET['url']?>", username: "<?=$_GET['username']?>" }, function(data) {
+ 				$('#favoriteButtonRemove .ui-btn-text').html("Removed from Favorites!");
+			});
+		});
+		</script>
+		
 		</div>
 	
 	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar" class="nav-glyphish-example" data-grid="a">
 		<ul>
-			<li><a href="home.php" id="homepage" data-icon="custom">Home</a></li>
-			<li><a href="share.php" id="share" data-icon="custom">Share</a></li>
+			<li><a href="home.php?username=<?=$_GET['username']?>" id="homepage" data-icon="custom" method = "get">Home</a></li>
+			<li><a href="share.php?username=<?=$_GET['username']?>" id="share" data-icon="custom" method = "get" data-ajax="false">Share</a></li>
 		
 		</ul>
 		</div>
 	</div>
 </div>
 
-<!-- Start of third page: #popup -->
-<div data-role="page" id="comments">
 
-	<div data-role="header" data-theme="e">
-		<h1>Dialog</h1>
-	</div><!-- /header -->
-
-	<div data-role="content" data-theme="d">	
-		<h2>Popup</h2>
-		<p>I have an id of "popup" on my page container and only look like a dialog because the link to me had a <code>data-	rel="dialog"</code> attribute which gives me this inset look and a <code>data-transition="pop"</code> attribute to change the transition to pop. Without this, I'd be styled as a normal page.</p>		
-		<p><a href="#one" data-rel="back" data-role="button" data-inline="true" data-icon="back">Back to page "one"</a></p>	
-	</div><!-- /content -->
-	
-	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
-		<div data-role="navbar" class="nav-glyphish-example" data-grid="a">
-		<ul>
-			<li><a href="home.php" id="homepage" data-icon="custom">Home</a></li>
-			<li><a href="share.php" id="share" data-icon="custom">Share</a></li>
-		</ul>
-		</div>
-	</div>
-</div>
-</div><!-- /page popup -->
-
-<script type="text/javascript">
-	$("#logout").hide();
-	$("#info").hide();
-	var retrievedObject = localStorage.getItem('username');
-	if (retrievedObject == "test") {
-		$("#form").hide();	
-		$("#logout").show();
-		$("#info").show();
-	}
-	$("#logout").click(function() {
-		localStorage.removeItem('username');
-		$("#form").show();
-		$("#logout").hide();
-		$("#info").hide();
-	});
-	</script>
 </div>
 <!--Home Screen/News Feed End-->
 </body>

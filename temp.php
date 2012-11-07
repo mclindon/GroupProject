@@ -42,7 +42,7 @@
 ?>
 
 <script type="text/javascript">
-		window.location="http://www.stanford.edu/~mclindon/cgi-bin/GroupProject/home.php?username=<?=$username?>";
+		window.location="http://www.stanford.edu/~ckortel/cgi-bin/GroupProject/home.php?username=<?=$username?>";
 </script>
 	
 </body>

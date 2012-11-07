@@ -27,9 +27,8 @@
  $username = $_POST["username"];
 
  
- if($username == null) {
- 	//$username = $_GET["username"];
- 	$username = "Bonnie";
+ if($username == "") {
+ 	$username = $_GET["username"];
  	$query = "select * from Users where username = '$username'";
  	$result = mysql_query($query);
  	$row = mysql_fetch_array($result, MYSQL_BOTH);
@@ -43,7 +42,15 @@
  
  if ($passwordCheck != "") {
  	if ($password == $passwordCheck) {
- 		mysql_query("insert into Users (username, password, email) VALUES ('$username', '$password', '$email')");
+ 		$queryInsert = "select * from NewPhotos";
+        $resultInsert = mysql_query($queryInsert);
+ 
+        $rowInsert = mysql_fetch_array($resultInsert, MYSQL_BOTH);
+        $url = $rowInsert["url"];
+
+ 		mysql_query("insert into Users (username, password, email, picture) VALUES ('$username', '$password', '$email', '$url')");
+ 		
+ 		 mysql_query("delete from NewPhotos");
  	} else {
  		?>
  		<p> Your passwords did not match. </p>
@@ -61,6 +68,8 @@
 
  if ($num_rows == 0) {
  ?>
+ 	<h1><?=$_GET['username']?>:)</h1>
+ 
  	<p> Username or password is incorrect. </p>
  	
  	<p> Would you like to try again? </p>
@@ -97,7 +106,7 @@
  			while($row = mysql_fetch_array($result, MYSQL_BOTH)) {
  			?>
  					<li>
- 						<a href="spot.php?url=<?=$row['url']?>" data-transition="slideup" method="get">
+ 						<a href="spot.php?url=<?=$row['url']?>&username=<?=$username?>" data-transition="slide" method="get">
  						<img src = "<?=$row['url']?>" alt = "test"/>
  						<h2><?=$row["name"]?></h2>
    						<p><?=$row["description"]?></p>
@@ -127,7 +136,7 @@
  			 </h2>
  			 </div>
  			<li>
- 				<a href="profile.php?username=<?=$row['username']?>" data-transition="slide" method="get">
+ 				<a href="profile.php?profileUsername=<?=$username?>&username=<?=$username?>" data-transition="slide" method="get">
  				<img src = "<?=$row['picture']?>" alt = "test"/>
  				<h3>My Profile</h3>
    		 		</a>
@@ -144,9 +153,9 @@
 		<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
 			<div data-role="navbar" class="nav-glyphish-example" data-grid="a">
 				<ul>
-					<li><a href="home.php" id="homepage" data-icon="custom">Home</a></li>
-					<li><a href="share.php?username=<?=$username?>" id="share" data-icon="custom" method="get">Share</a></li>				
-					</ul>
+					<li><a href="home.php?username=<?=$username?>" id="homepage" data-icon="custom" method="get">Home</a></li>
+					<li><a href="share.php?username=<?=$username?>" id="share" data-icon="custom" method="get" data-ajax="false">Share</a></li>	
+				</ul>
 			</div>
 		</div>
 	</div>
@@ -169,7 +178,7 @@
 	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
 		<ul>
-			<li><a href="home.php" id="home" data-icon="custom">Home</a></li>
+			<li><a href="home.php?username=<?=$username?>" id="home" data-icon="custom" method = "get">Home</a></li>
 			<li><a href="login.php" id="key" data-icon="custom">Login</a></li>
 			<li><a href="filter.php" id="beer" data-icon="custom" class="ui-btn-active">Filter</a></li>
 			<li><a href="#" id="skull" data-icon="custom">Settings</a></li>

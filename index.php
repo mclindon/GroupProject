@@ -37,7 +37,7 @@
 		<p> Choose to sign up or log in below!</p>	
 		
 		<p><a href="#two" data-role="button">Log In</a></p>	
-		<p><a href="#newUser" data-role="button">Create a User</a></p>
+		<p><a href="newUser.php" data-role="button" data-ajax="false">Create a User</a></p>
 	</div><!-- /content -->
 </div>
 
@@ -62,30 +62,6 @@
 	</div><!-- /content -->
 </div><!-- /Start of Log In Page: page two -->
 
-<!-- Create new User Page-->
-<div data-role="page" id="newUser" data-add-back-btn="true">
-	<div data-role="header">
-		<h1>Create A New User</h1>
-	</div><!-- /header -->
-	
-	<form action = "home.php" method = "post">
-		<h2>
-		Name: <input type="text" name ="username" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
-		</h2>
-		<h2>
-		Stanford Email Address: <input type="text" name ="email" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
-		</h2>
-		<h2>
-		Password: <input type="password" name ="password" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
-		</h2>
-		<h2>
-		Confirm Password: <input type="password" name ="passwordCheck" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
-		</h2>
-		<p><input type = "submit" data-direction="reverse" data-role="button" data-theme="b" value="Create Account and Sign In"></p>
-	</form>
-</div>
-
-<!--create new user page end-->
 
 
 <!-- Start of third page: #popup -->

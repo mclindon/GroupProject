@@ -24,8 +24,9 @@
  include("config.php"); 
 
  $username = $_GET['username']; 
+ $profileUsername = $_GET['profileUsername'];
   
- $query = "select * from Users where username = '$username'";
+ $query = "select * from Users where username = '$profileUsername'";
  $result = mysql_query($query);
  
  while($row = mysql_fetch_array($result, MYSQL_BOTH)) {
@@ -35,71 +36,86 @@
  ?> 
 
 <!-- /Home Screen/NewsFeed -->
-<div data-role="page" id="home" data-add-back-btn="true">
+<div data-role="page" id="home">
 
 	<div data-role="header">
-		<h1><?=$username?></h1>
+		<h1><?=$profileUsername?></h1>
 	</div><!-- /header -->
 		<img src = "<?=$userPhoto?>" alt = "test" vspace="20" hspace="20" align="middle"/>
 		
 	<div data-role="content">	
 
-			<h2><?=$username?>'s Spots</h2>	
+			<h2><?=$profileUsername?>'s Spots</h2>	
 			
 			<div data-role="content">
    			<ul class = "LV" data-role="listview" data-divider-theme="d" data-filter="true">
 			<?php
-			$query = "select * from Spots where username = '$username'";
+			$query = "select * from Spots where username = '$profileUsername'";
  			$result = mysql_query($query);
-
- 			while($row = mysql_fetch_array($result, MYSQL_BOTH)) {
+			if (mysql_num_rows($result) != 0) {
+	 			while($row = mysql_fetch_array($result, MYSQL_BOTH)) {
+	 			?>
+	 					<li>
+	 						<a href="spot.php?url=<?=$row['url']?>&username=<?=$username?>" data-transition="slide" method="get">
+	 						<img src = "<?=$row['url']?>" alt = "test"/>
+	   						<h3><?=$row["description"]?></h3>
+	   						</a>
+	   					</li>
+	   					<span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>
+	 			<?php
+	 			}
+			} else {
+				?>
+				<li><h3>No spots have been posted.</h3></li>
+				<?php	
+			}
+			?>
+			
+			<li data-role="list-divider" ><h2><?=$profileUsername?>'s Favorite Spots</h2></li>	
+			
+			<?php
+			$query = "select * from Favorites where username = '$profileUsername'";
+ 			$result = mysql_query($query);
+			if (mysql_num_rows($result) != 0) {
+ 				while($row = mysql_fetch_array($result, MYSQL_BOTH)) {
+ 					$picture = $row['url'];
+ 					$query2 = "select * from Spots where url = '$picture'";
+ 					$result2 = mysql_query($query2);
+ 					while($row2 = mysql_fetch_array($result2, MYSQL_BOTH)) {
  			?>
  					<li>
- 						<a href="spot.php?url=<?=$row['url']?>" data-transition="pop" method="get">
- 						<img src = "<?=$row['url']?>" alt = "test"/>
-   						<h3><?=$row["description"]?></h3>
+ 						<a href="spot.php?url=<?=$row2['url']?>&username=<?=$username?>" data-transition="slide" method="get">
+ 						<img src = "<?=$row2['url']?>" alt = "test"/>
+   						<h3><?=$row2["description"]?></h3>
    						</a>
    					</li>
    					<span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>
  			<?php
- 			}
+ 					}
+ 				}
+			} else {
+				?>
+				<li><h3>No spots have been added to Favorites.</h3></li>
+				<?php	
+			}
 			?>
+
 				</ul>
 			</div>
-			
-			<!--follow button needed -->
 		
 		</div><!-- /content -->
 
 	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar" class="nav-glyphish-example" data-grid="a">
 		<ul>
-			<li><a href="home.php" id="homepage" data-icon="custom">Home</a></li>
-			<li><a href="share.php" id="share" data-icon="custom">Share</a></li>
+			<li><a href="home.php?username=<?=$username?>" id="homepage" data-icon="custom" method="get">Home</a></li>
+			<li><a href="share.php?username=<?=$username?>" id="share" data-icon="custom" method="get" data-ajax="false">Share</a></li>
 		</ul>
 		</div>
 	</div>
 
 </div>
 
-
-
-<script type="text/javascript">
-	$("#logout").hide();
-	$("#info").hide();
-	var retrievedObject = localStorage.getItem('username');
-	if (retrievedObject == "test") {
-		$("#form").hide();	
-		$("#logout").show();
-		$("#info").show();
-	}
-	$("#logout").click(function() {
-		localStorage.removeItem('username');
-		$("#form").show();
-		$("#logout").hide();
-		$("#info").hide();
-	});
-	</script>
 </div>
 <!--Home Screen/News Feed End-->
 </body>
