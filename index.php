@@ -11,8 +11,8 @@
 	<link rel="stylesheet" href="jquery.mobile-1.2.0.css" />
 
 	<link rel="stylesheet" href="style.css"/>
-	<link rel="apple-touch-icon" href="icon2.png"/>
-	<link rel="apple-touch-startup-image" href="startup.png"/>
+	<link rel="apple-touch-icon" href="App Icon.jpeg"/>
+	<link rel="apple-touch-startup-image" href="Startup Screen.jpeg"/>
 	
 	<script src="jquery-1.8.2.min.js"></script>
 	<script src="jquery.mobile-1.2.0.js"></script>

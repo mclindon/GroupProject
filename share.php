@@ -77,9 +77,21 @@
 		What's the Spot? <input type="text" name ="newDescription" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
 		</h2>
 		<input name="username" type="hidden" value="<?=$_GET['username']?>"/>
+		</form>
 		<h2>
-		Where's the Spot? 
-		</h2>
+Where's the Spot? 
+</h2>
+<div style="padding-left:10px;padding-right:10px;">
+<p>Enter your location below or tap it on the map.</p>
+<form id="blankenter" action="index.php">
+<input type="text" name="startingpoint" id="startingpoint" />
+</form>
+</div>
+<!-- This is where the map gets inserted -->
+<img src = "map_fake" alt = "test"/>
+
+
+		<form>
 		
 		<input type = "submit" data-direction = "reverse" data-role = "button" data-theme = "c" value = "Share">
 		
@@ -89,6 +101,8 @@
 		<div data-role="navbar" class="nav-glyphish-example" data-grid="a">
 			<ul>
 				<li><a href="home.php?username=<?=$_GET['username']?>" id="homepage" data-icon="custom" method = "get">Home</a></li>
+				<li><a href="share.php?username=<?=$username?>" id="share" data-icon="custom" method="get" data-ajax="false">Share</a></li>	
+
 			</ul>
 		</div>
 	</div>

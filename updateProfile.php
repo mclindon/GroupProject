@@ -39,7 +39,7 @@
 			?>
 
 <script type="text/javascript">
-		window.location="http://www.stanford.edu/~ckortel/cgi-bin/GroupProject/profile.php?username=<?=$username?>&profileUsername=<?=$username?>";
+		window.location="http://www.stanford.edu/~mclindon/cgi-bin/GroupProject/profile.php?username=<?=$username?>&profileUsername=<?=$username?>";
 </script>
 
 </body>

@@ -34,7 +34,7 @@
  }
  ?>
 
-<!-- /Home Screen/NewsFeed -->
+<!-- /Spot Info Page -->
 <div data-role="page" id="home">
 	<div data-role="header" data-position="inline">
 		<h1><?=$spotName?></h1>
@@ -61,7 +61,27 @@
 		<img src = "<?=$spotPhoto?>" alt = "test" vspace="20" hspace="50" align="middle"/>
 		</h2>
 
-		
+		<div data-role="collapsible" data-collapsed-icon="arrow-r" and data-expanded-icon="arrow-d" data-mini="true">
+   		 <h3>Comments</h3>
+   		 <?php
+			$query = "select * from Comments where spot = '$spotID'";
+ 			$result = mysql_query($query);
+
+ 			 while($row = mysql_fetch_array($result, MYSQL_BOTH)) {
+ 			 ?>
+ 				 <h4><?=$row["comment"]?> -- <?=$row["user"]?></h4>
+   		 	<?php
+ 		 	}
+			?>
+			<form action = "newComment.php" method = "post">
+				<h5>
+				Comment:  <input type="text" name ="comment" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
+				</h5> 
+				<input name="username" type="hidden" value="<?=$_GET['username']?>"/>
+				<input name="url" type="hidden" value="<?=$_GET['url']?>"/>
+				<input type = "submit" data-direction = "reverse" data-role = "button" data-theme = "c" value = "Comment">
+				</div>
+			</form>
 		
 		<div id="mapcanvas" style="height:315px;width:320px" vspace ="20" hspace ="20"></div>
 
@@ -217,6 +237,7 @@
  				$('#favoriteButtonRemove .ui-btn-text').html("Removed from Favorites!");
 			});
 		});
+		
 		</script>
 		
 		</div>
