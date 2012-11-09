@@ -36,7 +36,6 @@
 
 <!-- /Home Screen/NewsFeed -->
 <div data-role="page" id="home">
-
 	<div data-role="header" data-position="inline">
 		<h1><?=$spotName?></h1>
 		<?php
