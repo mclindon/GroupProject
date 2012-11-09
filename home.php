@@ -25,7 +25,6 @@
  include("config.php"); 
 
  $username = $_POST["username"];
-
  
  if($username == "") {
  	$username = $_GET["username"];
@@ -47,6 +46,9 @@
  
         $rowInsert = mysql_fetch_array($resultInsert, MYSQL_BOTH);
         $url = $rowInsert["url"];
+        if($url == "") {
+ 			$url = "http://www.fabricworkshopandmuseum.org/images/noMediaUploaded.png";	
+ 		}
 
  		mysql_query("insert into Users (username, password, email, picture) VALUES ('$username', '$password', '$email', '$url')");
  		
@@ -136,7 +138,7 @@
  			 </h2>
  			 </div>
  			<li>
- 				<a href="profile.php?profileUsername=<?=$username?>&username=<?=$username?>" data-transition="slide" method="get">
+ 				<a href="profile.php?profileUsername=<?=$username?>&username=<?=$username?>" data-transition="slide" method="get" data-ajax="false">
  				<img src = "<?=$row['picture']?>" alt = "test"/>
  				<h3>My Profile</h3>
    		 		</a>
@@ -153,7 +155,7 @@
 		<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
 			<div data-role="navbar" class="nav-glyphish-example" data-grid="b">
 				<ul>
-					<li><a href="home.php?username=<?=$username?>" id="homepage" data-icon="custom" method="get">Home</a></li>
+					<li><a href="home.php?username=<?=$username?>" id="homepage" data-icon="custom" method="get" >Home</a></li>
 					<li><a href="share.php?username=<?=$username?>" id="share" data-icon="custom" method="get" data-ajax="false">Share</a></li>	
 					<li><a href="explore.php?username=<?=$username?>" id="explore" data-icon="custom" method="get">Explore</a></li>
 

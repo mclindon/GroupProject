@@ -34,10 +34,11 @@
 	<div data-role="content">	
 		<h2>Log In <span id="username"></span></h2>
 		
-		<p> Choose to sign up or log in below!</p>	
+		<p> Choose to sign up, log in, or visit as a guest below!</p>	
 		
 		<p><a href="#two" data-role="button">Log In</a></p>	
 		<p><a href="newUser.php" data-role="button" data-ajax="false">Create a User</a></p>
+		<p><a href="visitor.php" data-role="button" data-ajax="false">Enter as a Visitor</a></p>
 	</div><!-- /content -->
 </div>
 

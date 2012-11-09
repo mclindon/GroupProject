@@ -24,28 +24,16 @@
  include("config.php"); 
 
  		
- $username = $_POST['username'];
+ $username = $_GET['username'];
  
- $name = $_POST["newName"];
- $description = $_POST["newDescription"];
+ $url = $_GET['url'];
 
- $query = "select * from NewPhotos";
- $result = mysql_query($query);
- 
- $row = mysql_fetch_array($result, MYSQL_BOTH);
- $num = 0;
- $url = $row["url"];
- if($url == "") {
- 	$url = "http://www.fabricworkshopandmuseum.org/images/noMediaUploaded.png";	
- }
- mysql_query("insert into Spots (id, url, description, name, comments, coordX, coordY, username) VALUES ('$num', '$url', '$description', '$name', '$name', '$num', '$num', '$username')");
- 
- mysql_query("delete from NewPhotos");
+ mysql_query("DELETE FROM Spots WHERE username = '$username' and url = '$url'");
 
 ?>
 
 <script type="text/javascript">
-		window.location="http://www.stanford.edu/~ckortel/cgi-bin/GroupProject/home.php?username=<?=$username?>";
+		window.location="http://www.stanford.edu/~ckortel/cgi-bin/GroupProject/profile.php?profileUsername=<?=$username?>&username=<?=$username?>";
 </script>
 	
 </body>
