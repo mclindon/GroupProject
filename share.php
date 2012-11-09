@@ -77,7 +77,12 @@
 		What's the Spot? <input type="text" name ="newDescription" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
 		</h2>
 		<input name="username" type="hidden" value="<?=$_GET['username']?>"/>
+		<h2>
+		Where's the Spot? 
+		</h2>
+		
 		<input type = "submit" data-direction = "reverse" data-role = "button" data-theme = "c" value = "Share">
+		
 	</form>
 
 	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">

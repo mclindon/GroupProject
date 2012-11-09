@@ -151,10 +151,12 @@
 		</div><!-- /content -->
 	
 		<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
-			<div data-role="navbar" class="nav-glyphish-example" data-grid="a">
+			<div data-role="navbar" class="nav-glyphish-example" data-grid="b">
 				<ul>
 					<li><a href="home.php?username=<?=$username?>" id="homepage" data-icon="custom" method="get">Home</a></li>
 					<li><a href="share.php?username=<?=$username?>" id="share" data-icon="custom" method="get" data-ajax="false">Share</a></li>	
+					<li><a href="explore.php?username=<?=$username?>" id="explore" data-icon="custom" method="get">Explore</a></li>
+
 				</ul>
 			</div>
 		</div>

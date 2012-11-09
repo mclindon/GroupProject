@@ -63,33 +63,6 @@
 </div><!-- /Start of Log In Page: page two -->
 
 
-
-<!-- Start of third page: #popup -->
-<div data-role="page" id="popup">
-
-	<div data-role="header" data-theme="e">
-		<h1>Dialog</h1>
-	</div><!-- /header -->
-
-	<div data-role="content" data-theme="d">	
-		<h2>Popup</h2>
-		<p>I have an id of "popup" on my page container and only look like a dialog because the link to me had a <code>data-rel="dialog"</code> attribute which gives me this inset look and a <code>data-transition="pop"</code> attribute to change the transition to pop. Without this, I'd be styled as a normal page.</p>		
-		<p><a href="#one" data-rel="back" data-role="button" data-inline="true" data-icon="back">Back to page "one"</a></p>	
-	</div><!-- /content -->
-	
-	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
-		<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
-		<ul>
-			<li><a href="home.php" id="home" data-icon="custom">Home</a></li>
-			<li><a href="login.php" id="key" data-icon="custom">Login</a></li>
-			<li><a href="filter.php" id="beer" data-icon="custom" class="ui-btn-active">Filter</a></li>
-			<li><a href="#" id="skull" data-icon="custom">Settings</a></li>
-		</ul>
-		</div>
-	</div>
-</div>
-</div><!-- /page popup -->
-
 <script type="text/javascript">
 // This handles all the swiping between each page. You really
 // needn't understand it all.
