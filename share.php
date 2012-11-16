@@ -70,6 +70,7 @@
 		</div>
 
 	<form action = "temp.php" method = "post">
+		<div style="padding-left:10px;padding-right:10px;">
 		<h2>
 		Name the Spot  <input type="text" name ="newName" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
 		</h2>
@@ -77,6 +78,7 @@
 		What's the Spot? <input type="text" name ="newDescription" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
 		</h2>
 		<input name="username" type="hidden" value="<?=$_GET['username']?>"/>
+		</div>
 		</form>
 		<h2>
 Where's the Spot? 

@@ -33,11 +33,10 @@ $result=mysql_query($query);
 
 $initNum = $numRows; 
 $insertQuery = mysql_query("INSERT INTO Comments (comment, user, spot) VALUES ('$comment', '$username', '$url')");
-
 ?>
 
 <script type="text/javascript">
-		window.location="http://www.stanford.edu/~mclindon/cgi-bin/GroupProject/home.php?username=<?=$username?>";
+		window.location.href="home.php?username=<?=$username?>";
 </script>
 	
 </body>
