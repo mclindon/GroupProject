@@ -77,8 +77,8 @@
 				<h5>
 				Comment:  <input type="text" name ="comment" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus">
 				</h5> 
-				<input name="username" type="text" value="<?=$_GET['username']?>"/>
-				<input name="url" type="text" value="<?=$_GET['url']?>"/>
+				<input name="username" type="hidden" value="<?=$_GET['username']?>"/>
+				<input name="url" type="hidden" value="<?=$_GET['url']?>"/>
 				<input type = "submit" data-direction = "reverse" data-role = "button" data-theme = "c" value = "Comment">
 				</div>
 			</form>

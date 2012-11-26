@@ -49,7 +49,7 @@
 	</div><!-- /header -->
 
 	<div data-role="content">	
-		<h2>Please enter your silly username and password</h2>
+		<h2>Please enter your username and password</h2>
 		
 		<form action = "home.php" method = "post">
 			<h2>

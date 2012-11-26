@@ -25,6 +25,7 @@
 
  		
  $username = $_POST['username'];
+ echo($username); 
  
  $name = $_POST["newName"];
  $description = $_POST["newDescription"];
