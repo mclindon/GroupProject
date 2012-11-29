@@ -17,9 +17,85 @@
 	<script src="jquery-1.8.2.min.js"></script>
 	<script src="jquery.mobile-1.2.0.js"></script>
 	<script src="js/script.js"></script>
+	
+	<script type="text/javascript"src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en">
+	<script type="text/javascript" src="/admin/gmap3.min.js"></script>
+	 <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+    <script type="text/javascript" src="gmap3.js"></script> 
+
 
 
 </head>  
+<style>
+
+	#ctrl{
+        width: 500px;
+        margin:0 auto;
+      }
+      .gmap3{
+        margin: 20px auto;
+        border: 1px dashed #C0C0C0;
+        width: 250px;
+        height: 250px;
+      }
+    
+</style>
+
+ <script type="text/javascript">
+      $(function(){
+      
+        $('#test1').gmap3({
+          getgeoloc:{
+            callback : function(latLng){
+              if (latLng){
+                $('#test1-result').html('localised !');
+                $(this).gmap3({
+                  marker:{ 
+                    latLng:latLng
+                  }, 
+                  map:{
+            		options:{
+             		 zoom: 18
+            	}
+          		}
+                });
+              } else {
+                $('#test1-result').html('not localised !');
+              }
+            }
+          }
+        });
+        
+        $('#test-ok').click(function(){
+          var addr = $('#test-address').val();
+          if ( !addr || !addr.length ) return;
+          $("#test").gmap3({
+            getlatlng:{
+              address:  addr,
+              callback: function(results){
+                if ( !results ) return;
+                $(this).gmap3({
+                  marker:{
+                    latLng:results[0].geometry.location,
+                    map:{
+                      center: true
+                    }
+                  }
+                });
+              }
+            }
+          });
+        });
+        
+        $('#test-address').keypress(function(e){
+          if (e.keyCode == 13){
+            $('#test-ok').click();
+          }
+        });
+      });
+
+    </script>
+
 <body> 
 
 
@@ -84,10 +160,18 @@
 		</h2>
 		<div style="padding-left:10px;padding-right:10px;">
 		<p>Enter your location below or tap it on the map.</p>
-		<input type="text" name="startingpoint" id="startingpoint" />
+		
+		
+		 <div>
+		 <input type="text" id="test-address" size="60"> 
+		 <button type="button" id="test-ok">Locate</button></div>  
+
+
 		</div>
+		
 	<!-- This is where the map gets inserted -->
-		<img src = "map_fake" alt = "test"/>
+		<div id="test1" class="gmap3"></div>
+		
 		<input type = "submit" data-direction = "reverse" data-role = "button" data-theme = "c" value = "Share">
 	</form>
 
